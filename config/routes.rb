@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'artists#index'
+  # root '/api/artists#index'
 
   namespace :api do
     resources :artists
