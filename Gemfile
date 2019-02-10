@@ -30,6 +30,9 @@ gem 'rspotify'
 
 gem 'rack-cors', :require => 'rack/cors'
 gem 'figaro'
+gem 'jwt'
+gem 'foreman'
+gem 'rest-client'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
