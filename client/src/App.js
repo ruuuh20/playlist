@@ -40,8 +40,8 @@ class App extends Component {
         <Login currentUser={this.state.currentUser} />
         <Route path="/callback" component={this.handleCallback} />
         <Route exact path="/profile" component={this.renderProfile} />
-        <ArtistsContainer />
-        <ArtistSearch />
+        <Route path="/artists" component={ArtistsContainer} />
+
       </div>
     );
   }

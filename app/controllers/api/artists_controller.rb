@@ -3,16 +3,16 @@ require 'rspotify'
 class Api::ArtistsController < ApplicationController
 
   def index
-    # @artists = Artist.all
-    #
-    # render json: @artists
+    @artists = Artist.all
 
-    if !params[:name].empty?
-     @artists = RSpotify::Artist.search(params[:name])
-     render json: @artists
-   else
-     redirect_to root_path
-   end
+    render json: @artists
+
+   #  if !params[:name].empty?
+   #   @artists = RSpotify::Artist.search(params[:name])
+   #   render json: @artists
+   # else
+   #   redirect_to root_path
+   # end
 
 
   end
