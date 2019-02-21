@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/auth', to: 'sessions#create'
     # get '/callback', to: 'users#create'
     post '/login', to: "users#create"
+    get 'artists/search', to: 'artists#search'
   end
   # root '/api/artists#index'
 

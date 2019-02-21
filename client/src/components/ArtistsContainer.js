@@ -13,7 +13,7 @@ class ArtistsContainer extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/artists.json')
+    axios.get('http://localhost:3001/api/artists.json')
     .then(response => {
       console.log(response)
       this.setState({
@@ -26,10 +26,17 @@ class ArtistsContainer extends Component {
   handleSearchSubmit = (e) => {
     e.preventDefault();
     const { term } = this.state;
-    axios.post('/api/artists', { term })
-    .then(res => {
-      console.log(term)
-    })
+    // axios.post('/api/artists', { term })
+    // .then(res => {
+    //   console.log(term)
+    // })
+    fetch('http://localhost:3001/api/artists', {
+      method: 'POST',
+    headers:{
+        "accepts":"application/json"
+    }
+})
+    .then(resp => console.log(resp))
 
 
   }
