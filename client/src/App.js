@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <h1>Playlist app</h1>
+      <h1>PlayMixList app</h1>
       <h2><a href="/artists">Artists</a></h2>
         <Login currentUser={this.state.currentUser} />
         <Route path="/callback" component={this.handleCallback} />
