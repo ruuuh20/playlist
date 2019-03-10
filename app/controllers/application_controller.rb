@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_action :authorized, except: [:issue_token, :decode, :logged_in?]
+  # before_action :authorized, except: [:issue_token, :decode, :logged_in?]
 
   def issue_token(payload)
     JWT.encode(payload, Rails.application.credentials.secret_key_base)

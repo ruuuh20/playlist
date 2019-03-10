@@ -3,9 +3,10 @@ require 'rspotify'
 class Api::ArtistsController < ApplicationController
 
   def index
-    @artists = RSpotify::Artist.search('artic')
+    # @artists = RSpotify::Artist.search('artic')
+      @artists = Artist.all
     render json: @artists
-    # @artists = Artist.all
+
     #
     # render json: @artists
 

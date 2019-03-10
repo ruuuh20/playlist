@@ -8,6 +8,12 @@ export default class Auth {
             method: "POST",
             headers: Headers(),
             body: JSON.stringify({ code })
-        }).then(res => res.json());
+        }).then(res => res.json())
+          .then(json => {
+            // Save JWT token in local storage
+                sessionStorage.setItem("jwt", json.jwt);
+                console.log(sessionStorage)
+                return json.user
+          });
     }
 }

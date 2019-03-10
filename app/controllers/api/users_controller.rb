@@ -4,15 +4,26 @@ class Api::UsersController < ApplicationController
       auth_params = SpotifyApiAdapter.login(params[:code])
       user_data = SpotifyApiAdapter.getUserData(auth_params["access_token"])
 
-      user = User.find_or_create_by(user_params(user_data))
+      @user = User.find_or_create_by(user_params(user_data))
       img_url = user_data["images"][0] ? user_data["images"][0]["url"] : nil
 
       encodedAccess = issue_token({token: auth_params["access_token"]})
       encodedRefresh = issue_token({token: auth_params["refresh_token"]})
 
-      user.update(profile_img_url: img_url,access_token: encodedAccess,refresh_token: encodedRefresh)
+      @user.update(profile_img_url: img_url,access_token: encodedAccess,refresh_token: encodedRefresh)
 
-      render json: user.to_json(:except => [:access_token, :refresh_token, :created_at, :updated_at])
+
+       # Create and send JWT Token for user
+      payload = {user_id: @user.id}
+      token = issue_token(payload)
+
+      # render json: user.to_json(:except => [:access_token, :refresh_token, :created_at, :updated_at])
+      render json: {jwt: token, user: {
+                              email: @user.email,
+                              spotify_url: @user.spotify_url,
+                              profile_img_url: @user.profile_img_url
+                              }
+}
   end
 
   private
