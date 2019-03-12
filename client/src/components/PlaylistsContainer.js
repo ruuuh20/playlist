@@ -12,7 +12,15 @@ class PlaylistsContainer extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/api/playlists.json')
+    axios.get('http://localhost:3001/api/playlists.json', {
+      headers: {
+        'Access-Control-Allow-Origin' : '*',
+        "content-type": "application/json",
+        'accept': "application/json",
+        'Authorization': "Token token=" + sessionStorage.getItem('jwt')
+      }
+
+   })
     .then(response => {
       console.log(response)
       this.setState({
@@ -45,7 +53,7 @@ class PlaylistsContainer extends Component {
       <div className="playlists-container">
       <h1>Playlists</h1>
 
-      
+
       {this.state.playlists.map( playlist => {
                  return (
                      <div className="single-playlist" key={playlist.id}>

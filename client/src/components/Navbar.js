@@ -10,7 +10,10 @@ const Navbar = (props) => {
     { !sessionStorage.jwt ?
           <li>Log in</li>
         :
+        <React.Fragment>
           <li>Welcomeeeee</li>
+          <li><a href="/playlists">Playlists</a></li>
+        </React.Fragment>
     }
 
     </div>

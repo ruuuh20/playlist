@@ -16,4 +16,8 @@ export default class Auth {
                 return json.user
           });
     }
+
+    static loggedIn() {
+    return !!sessionStorage.jwt
+}
 }

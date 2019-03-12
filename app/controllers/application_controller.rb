@@ -1,3 +1,4 @@
+require 'pry'
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
@@ -21,7 +22,8 @@ def current_user
       decoded_token = decode(jwt_token)
       # if a decoded token is found, use it to return a user
       if decoded_token
-        user_id = decoded_token[0]["user_id"]
+        # binding.pry
+        user_id = decoded_token["user_id"]   #change from [0]["user_id"]
         @current_user ||= User.find_by(id: user_id)
       end
     end
