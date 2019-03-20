@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PlaylistForm from './PlaylistForm'
 
 class PlaylistsContainer extends Component {
   constructor(props) {
@@ -30,35 +31,37 @@ class PlaylistsContainer extends Component {
     .catch(error => console.log(error))
   }
 
-  handleSearchSubmit = (e) => {
-    e.preventDefault();
-    const { term } = this.state;
-    // axios.post('/api/playlists', { term })
-    // .then(res => {
-    //   console.log(term)
-    // })
-    fetch('http://localhost:3001/api/playlists', {
-      method: 'POST',
-    headers:{
-        "accepts":"application/json"
-    }
-})
-    .then(resp => console.log(resp))
+//   handleSearchSubmit = (e) => {
+//     e.preventDefault();
+//     const { term } = this.state;
+//     // axios.post('/api/playlists', { term })
+//     // .then(res => {
+//     //   console.log(term)
+//     // })
+//     fetch('http://localhost:3001/api/playlists', {
+//       method: 'POST',
+//     headers:{
+//         "accepts":"application/json"
+//     }
+// })
+//     .then(resp => console.log(resp))
+//
+//
+//   }
 
-
-  }
 
   render() {
     return (
       <div className="playlists-container">
       <h1>Playlists</h1>
+      <PlaylistForm />
 
 
       {this.state.playlists.map( playlist => {
                  return (
                      <div className="single-playlist" key={playlist.id}>
 
-                         <h4>{playlist.name}</h4>
+                         <h4>{playlist.title}</h4>
 
 
                      </div>

@@ -14,6 +14,7 @@ def decode(jwt_token)
     # JWT.decode(jwt_token, ENV["SOME_SECRET"], true, my_algorithm)[0]
     # my_algorithm = { algorithm: ENV["SOME_SUPER_SECRET"]}
     JWT.decode(jwt_token, Rails.application.credentials.secret_key_base)[0]
+  
 end
 
 def current_user
