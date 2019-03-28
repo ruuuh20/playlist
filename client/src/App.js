@@ -8,7 +8,9 @@ import Callback from './components/Callback'
 import Auth from './adapters/Auth';
 import { Route, withRouter } from 'react-router-dom';
 import PlaylistsContainer from './components/PlaylistsContainer'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import { BrowserRouter } from 'react-router-dom'
+import PlaylistShow from './components/PlaylistShow'
 
 class App extends Component {
 
@@ -37,17 +39,25 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-      <Navbar />
-      <h1>PlayMixList app</h1>
-      <h2><a href="/artists">Artists</a></h2>
-        <Login currentUser={this.state.currentUser} />
-        <Route path="/callback" component={this.handleCallback} />
-        <Route exact path="/profile" component={this.renderProfile} />
-        <Route path="/artists" component={ArtistsContainer} />
-        <Route path="/playlists" component={PlaylistsContainer} />
 
-      </div>
+        <div className="App">
+          <div>
+          <Navbar currentUser={this.state.currentUser}/>
+
+          <h2><a href="/artists">Artists</a></h2>
+            <Login currentUser={this.state.currentUser} />
+
+          <Route path="/callback" component={this.handleCallback} />
+          <Route exact path="/profile" component={this.renderProfile} />
+          <Route path="/artists" component={ArtistsContainer} />
+          <Route path="/playlists" component={PlaylistsContainer} />
+          <Route path="/playlists/:id" component={PlaylistShow} />
+          </div>
+
+
+        </div>
+
+
     );
   }
 }

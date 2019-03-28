@@ -9,6 +9,7 @@
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
     "axios": "^0.18.0"
   }
 }

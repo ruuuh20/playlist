@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
       encodedAccess = issue_token({token: auth_params["access_token"]})
       encodedRefresh = issue_token({token: auth_params["refresh_token"]})
 
-      @user.update(profile_img_url: img_url,access_token: encodedAccess,refresh_token: encodedRefresh)
+      @user.update(profile_img_url: img_url, access_token: encodedAccess, refresh_token: encodedRefresh)
 
 
        # Create and send JWT Token for user
@@ -20,6 +20,7 @@ class Api::UsersController < ApplicationController
       # render json: user.to_json(:except => [:access_token, :refresh_token, :created_at, :updated_at])
       render json: {jwt: token, user: {
                               email: @user.email,
+                              display_name: @user.display_name,
                               spotify_url: @user.spotify_url,
                               profile_img_url: @user.profile_img_url
                               }

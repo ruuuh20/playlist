@@ -10,8 +10,10 @@ export default class Auth {
             body: JSON.stringify({ code })
         }).then(res => res.json())
           .then(json => {
+              console.log(json)
             // Save JWT token in local storage
                 sessionStorage.setItem("jwt", json.jwt);
+                sessionStorage.setItem("display_name", json.user.display_name);
                 console.log(sessionStorage)
                 return json.user
           });

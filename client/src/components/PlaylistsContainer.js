@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PlaylistForm from './PlaylistForm'
+import PlaylistForm from './PlaylistForm';
+import { Link } from 'react-router-dom'
 
 class PlaylistsContainer extends Component {
   constructor(props) {
@@ -59,12 +60,11 @@ class PlaylistsContainer extends Component {
 
       {this.state.playlists.map( playlist => {
                  return (
-                     <div className="single-playlist" key={playlist.id}>
-
+                   <Link to={`/playlists/${playlist.id}`} key={playlist.id}>
+                  
                          <h4>{playlist.title}</h4>
 
-
-                     </div>
+                     </Link>
                  )
              })}
       </div>

@@ -6,6 +6,7 @@ const Profile = ({currentUser}) =>{
        <div>
         <h1>Welcome</h1>
            <h1>{display_name}</h1>
+           <h1>My id is: {currentUser.id}</h1>
            <h1>{email}</h1>
            <a href={spotify_url}>
             <img src={profile_img_url} alt="spotifyImg"/>
